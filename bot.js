@@ -204,7 +204,6 @@ bot.on("message", async (msg) => {
 
   const negativeCount = trimmed.reduce((acc, m) => acc + (m.mood === "negative" || m.mood === "crisis" ? 1 : 0), 0);
 
-  console.log(negativeCount, THRESHOLD_NEGATIVE)
   if (negativeCount >= THRESHOLD_NEGATIVE) {
     await bot.sendMessage(
       chatId,
