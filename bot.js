@@ -190,6 +190,7 @@ bot.on("message", async (msg) => {
   const chatId = msg.chat.id;
   const text = msg.text;
 
+  console.log(msg)
   // Пропустим команды (начинаются с '/')
   if (!text || text.startsWith("/")) return;
 
@@ -203,7 +204,7 @@ bot.on("message", async (msg) => {
   USER_HISTORY.set(userId, trimmed);
 
   const negativeCount = trimmed.reduce((acc, m) => acc + (m.mood === "negative" || m.mood === "crisis" ? 1 : 0), 0);
-
+  console.log(negativeCount, THRESHOLD_NEGATIVE)
   if (negativeCount >= THRESHOLD_NEGATIVE) {
     await bot.sendMessage(
       chatId,
